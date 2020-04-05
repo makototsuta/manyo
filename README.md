@@ -1,24 +1,16 @@
-# README
+# User Model
+-name string
+-email  string
+-admin  boolean
+-password string
+-password_confirmation  string
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Task Model
+-task_name  string
+-priority string
+-status string
+-user_name  string
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Session Model
+-email  string
+-password string
