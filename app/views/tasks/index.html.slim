@@ -1,2 +1,21 @@
-h1 Tasks#index
-p Find me in app/views/tasks/index.html.slim
+h1 タスク一覧
+= link_to '新規登録', new_task_path, class: 'btn btn-primary'
+
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Task.human_attribute_name(:task_name)
+      th= Task.human_attribute_name(:priority)
+      th= Task.human_attribute_name(:status)
+      th= Task.human_attribute_name(:user_name)
+      th
+    tbody
+      - @tasks.each do |task|
+        tr
+          td= task.task_name
+          td= task.priority
+          td= task.status
+          td= task.user_name
+          td
+            = link_to '詳細', task_path(task), class: 'btn btn-primary mr-3'
+            = link_to '編集', edit_task_path(task), class: 'btn btn-primary mr-3'
