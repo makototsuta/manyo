@@ -9,8 +9,4 @@
 -task_name  string
 -priority string
 -status string
--user_name  string
-
-# Session Model
--email  string
--password string
+-name  string
