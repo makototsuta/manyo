@@ -1,5 +1,4 @@
 h1 タスク一覧
-= link_to '新規登録', new_task_path, class: 'btn btn-primary'
 
 table.table.table-hover
   thead.thead-default
@@ -19,3 +18,6 @@ table.table.table-hover
           td
             = link_to '詳細', task_path(task), class: 'btn btn-primary mr-3'
             = link_to '編集', edit_task_path(task), class: 'btn btn-primary mr-3'
+            = link_to '削除', task, method: :delete, data: { confirm: "タスク「#{task.task_name}」を削除します。宜しいですか？"}, class: 'btn btn-danger'
+
+= link_to '新規登録', new_task_path, class: 'btn btn-primary'
