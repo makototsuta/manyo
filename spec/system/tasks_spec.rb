@@ -19,13 +19,30 @@ RSpec.describe 'タスク管理機能', type: :system do
 
   describe 'タスク登録画面' do
     context '必要項目を入力して、createボタンを押した場合' do
-      it 'データが保存される'
+
+      it 'データが保存される' do
+        visit new_task_path
+
+        fill_in 'タスク名', with: 'タスク'
+        fill_in '優先順位', with: '優先'
+        fill_in 'ステータス', with: '未着手'
+        fill_in '登録者', with: 'makoto'
+
+        click_on '登録する'
+        expect(page).to have_content '登録しました'
+      end
     end
   end
 
   describe 'タスク詳細画面' do
-     context '任意のタスク詳細画面に遷移した場合' do
-       it '該当タスクの内容が表示されたページに遷移する'
-     end
+    context '任意のタスク詳細画面に遷移した場合' do
+      it '該当タスクの内容が表示されたページに遷移する' do
+        task = FactoryBot.create(:task, task_name: 'task')
+
+        visit task_path(task)
+
+        expect(page).to have_content 'task'
+      end
+    end
   end
 end

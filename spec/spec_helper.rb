@@ -5,7 +5,7 @@ require 'supports/capybara'
 RSpec.configure do |config|
 
   config.before(:each, type: :system) do
-    driven_by :selenium_chorome_headless
+    driven_by :selenium_chrome_headless
   end
 
   config.expect_with :rspec do |expectations|
