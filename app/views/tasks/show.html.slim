@@ -8,6 +8,9 @@ table.table.table-hover
       th= Task.human_attribute_name(:task_name)
       td= @task.task_name
     tr
+      th= Task.human_attribute_name(:deadline)
+      td= @task.deadline
+    tr
       th= Task.human_attribute_name(:priority)
       td= @task.priority
     tr

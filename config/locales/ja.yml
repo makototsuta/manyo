@@ -14,6 +14,7 @@ ja:
         id: ID
         task_name: タスク名
         priority: 優先順位
+        deadline: 終了期限
         status: ステータス
         user_name: 登録者
         created_at: 登録日時

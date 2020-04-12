@@ -3,5 +3,4 @@ class Task < ApplicationRecord
   validates :priority,  presence: true, length: { maximum: 10 }
   validates :status,  presence: true, length: { maximum: 10 }
   validates :user_name,  presence: true, length: { maximum: 30 }
-  default_scope -> { order(created_at: :desc) }
 end
