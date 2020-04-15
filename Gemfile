@@ -41,3 +41,5 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'bootstrap'
 gem 'rails_12factor', group: :production
+gem 'ransack'
+gem 'kaminari'

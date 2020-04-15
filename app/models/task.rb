@@ -3,4 +3,12 @@ class Task < ApplicationRecord
   validates :priority,  presence: true, length: { maximum: 10 }
   validates :status,  presence: true, length: { maximum: 10 }
   validates :user_name,  presence: true, length: { maximum: 30 }
+
+  scope :get_by_task_name, ->(task_name) {
+    where("task_name like ?", "%#{task_name}%")
+  }
+  scope :get_by_status, ->(status) {
+    where(status: status)
+  }
+
 end

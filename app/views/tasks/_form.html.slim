@@ -3,6 +3,9 @@
     - task.errors.full_messages.each do |message|
       li = message
 
+.nav.justify-content-end
+  = link_to '一覧', tasks_path, class: 'nav-link'
+
 = form_with model: task, local: true do |f|
   .form-group
     = f.label :task_name
@@ -15,7 +18,7 @@
     = f.text_field :priority, class: 'form-control', id:'task_priority'
   .form-group
     = f.label :status
-    = f.text_field :status, class: 'form-control', id:'task_status'
+    = f.select :status, [["未着手", "未着手"], ["着手中", "着手中"], ["完了", "完了"]], prompt: "選択してください"
   .form-group
     = f.label :user_name
     = f.text_field :user_name, class: 'form-control', id:'task_user_name'
