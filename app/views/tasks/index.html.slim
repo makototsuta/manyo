@@ -1,15 +1,5 @@
 h1 タスク一覧
 
-/= search_form_for @q, url: tasks_path do |f|
-/    = f.label:task_name_cont, '名称'
-/    span uk-search-icon=""
-/    = f.text_field :task_name_cont,placeholder: "タイトルから検索",class: "uk-search-input"
-
-/    = f.label:status_cont, 'ステータス'
-/    = f.select :status_cont, [["未着手", "未着手"], ["着手中", "着手中"], ["完了", "完了"]], prompt: "選択してください"
-
-/    = f.submit class: 'search-btn'
-
 = form_tag(tasks_path, method: "get") do
     = label_tag :task_name, "名前"
     = text_field_tag :task_name, params[:task_name]
@@ -59,4 +49,7 @@ table.table.table-hover
 = paginate @tasks
 
 = link_to '終了期限でソートする', tasks_path(sort_expired: "true"), class: 'btn btn-info mr-3'
+
+= link_to '優先順位が高い順に並べ替えをする', tasks_path(sort_priority: "true"), class: 'btn btn-info mr-3'
+
 = link_to '新規登録', new_task_path, class: 'btn btn-primary'

@@ -11,4 +11,5 @@ class Task < ApplicationRecord
     where(status: status)
   }
 
+  enum priority:  [:'高', :'中', :'低']
 end

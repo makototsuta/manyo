@@ -12,10 +12,10 @@
     = f.text_field :task_name, class: 'form-control', id:'task_task_name'
   .form-group
     = f.label :deadline
-    = f.text_field :deadline, class: 'form-control', id:'task_deadline'
+    = f.date_select :deadline, {include_blank: true, use_month_numbers: true}, {class: 'time-box'}
   .form-group
     = f.label :priority
-    = f.text_field :priority, class: 'form-control', id:'task_priority'
+    = f.select :priority, [["高", "高"], ["中", "中"], ["低", "低"]], prompt: "選択してください"
   .form-group
     = f.label :status
     = f.select :status, [["未着手", "未着手"], ["着手中", "着手中"], ["完了", "完了"]], prompt: "選択してください"
