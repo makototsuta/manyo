@@ -23,9 +23,12 @@ RSpec.describe 'タスク管理機能', type: :system do
       it 'データが保存される' do
         visit new_task_path
 
-        fill_in 'タスク名', with: 'タスク'
-        fill_in '優先順位', with: '優先'
-        fill_in 'ステータス', with: '未着手'
+        fill_in 'タイトル', with: 'タスク'
+        select '2020', from: 'task_deadline_1i'
+        select '1', from: 'task_deadline_2i'
+        select '1', from: 'task_deadline_3i'
+        select '高', from: '優先順位'
+        select '着手中', from: 'ステータス'
         fill_in '登録者', with: 'makoto'
 
         click_on '登録する'

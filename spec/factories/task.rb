@@ -5,8 +5,8 @@ FactoryBot.define do
   factory :task do
     task_name { 'Factory' }
     deadline { '2020-05-02' }
-    priority { '優先' }
-    status { '着手済み' }
+    priority { '高' }
+    status { '着手中' }
     user_name { 'コンテント１' }
   end
   # 作成するテストデータの名前を「second_task」とします
@@ -14,16 +14,16 @@ FactoryBot.define do
   factory :second_task, class: Task do
     task_name { 'Factory2' }
     deadline { '2020-01-10' }
-    priority { '優先' }
-    status { '着手済み2' }
+    priority { '中' }
+    status { '未着手' }
     user_name { 'コンテント2' }
   end
 
   factory :third_task, class: Task do
     task_name { 'Factory3' }
     deadline { '2020-03-15' }
-    priority { '優先' }
-    status { '着手済み3' }
+    priority { '低' }
+    status { '完了' }
     user_name { 'コンテント3' }
   end
 end
