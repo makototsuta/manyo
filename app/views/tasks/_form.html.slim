@@ -19,7 +19,5 @@
   .form-group
     = f.label :status
     = f.select :status, [["未着手", "未着手"], ["着手中", "着手中"], ["完了", "完了"]], prompt: "選択してください"
-  .form-group
-    = f.label :user_name
-    = f.text_field :user_name, class: 'form-control', id:'task_user_name'
+
   = f.submit nil, class: 'btn btn-primary'

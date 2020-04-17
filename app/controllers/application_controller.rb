@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
-#  before_action :search_ransack
-#  def search_ransack
-#    @q = Task.ransack(params[:q])
-#    @stasks = @q.result(distinct: true)
-#  end
+  protect_from_forgery with: :exception
+  include SessionsHelper
+  before_action :login_required
 
+  private
+
+  def login_required
+    redirect_to login_path unless current_user
+  end
 end

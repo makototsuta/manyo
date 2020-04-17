@@ -17,7 +17,7 @@ table.table.table-hover
       th= Task.human_attribute_name(:deadline)
       th= Task.human_attribute_name(:priority)
       th= Task.human_attribute_name(:status)
-      th= Task.human_attribute_name(:user_name)
+      th= '登録者'
       th
     tbody
 
@@ -28,7 +28,7 @@ table.table.table-hover
           td= task.deadline
           td= task.priority
           td= task.status
-          td= task.user_name
+          td= task.user.name
           td
             = link_to '詳細', task_path(task), class: 'btn btn-primary mr-3'
             = link_to '編集', edit_task_path(task), class: 'btn btn-success mr-3'
@@ -40,7 +40,7 @@ table.table.table-hover
           td= task.deadline
           td= task.priority
           td= task.status
-          td= task.user_name
+          td= task.user.name
           td
             = link_to '詳細', task_path(task), class: 'btn btn-primary mr-3'
             = link_to '編集', edit_task_path(task), class: 'btn btn-success mr-3'

@@ -1,0 +1,9 @@
+h3
+  = @user.name
+  |のページ
+p
+  |メールアドレス:
+  = @user.email
+
+  .nav.justify-content
+    = link_to '一覧', tasks_path, class: 'nav-link'

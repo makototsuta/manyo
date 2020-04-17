@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.page(params[:page]).per(5).order(created_at: :desc)
+    @tasks = current_user.tasks.page(params[:page]).per(5).order(created_at: :desc)
 
     if params[:task_name].present?
       @tasks = @tasks.get_by_task_name params[:task_name]
@@ -11,16 +11,16 @@ class TasksController < ApplicationController
     end
 
     if params[:sort_expired]
-      @tasks = Task.page(params[:page]).per(5).order(deadline: :desc)
+      @tasks = current_user.tasks.page(params[:page]).per(5).order(deadline: :desc)
     end
 
     if params[:sort_priority]
-      @tasks = Task.page(params[:page]).per(5).order(priority: :asc)
+      @tasks = current_user.tasks.page(params[:page]).per(5).order(priority: :asc)
     end
   end
 
   def show
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
   end
 
   def new
@@ -28,11 +28,11 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
 
     if @task.save
       redirect_to @task, notice: "タスク 「#{@task.task_name}」を登録しました。"
@@ -42,17 +42,16 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    task = Task.find(params[:id])
+    task = current_user.tasks.find(params[:id])
     task.destroy
     redirect_to tasks_url, notice:"タスク「#{task.task_name}」を削除しました。"
   end
 
   def update
-    task = Task.find(params[:id])
+    task = current_user.tasks.find(params[:id])
     task.update!(task_params)
     redirect_to tasks_url, notice: "タスク「#{task.task_name}」を更新しました。"
   end
-
 
   private
 

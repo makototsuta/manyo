@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'タスク管理機能', type: :model do
     it 'task_nameが空ならバリテーションが通らない' do
-      task = Task.new(task_name: " ", deadline: "2020-01-02", priority: "中", status: "着手中", user_name:"1")
+      task = Task.new(task_name: " ", deadline: "2020-01-02", priority: "中", status: "着手中")
       expect(task).not_to be_valid
     end
 
@@ -13,7 +13,7 @@ RSpec.describe 'タスク管理機能', type: :model do
     end
 
     it 'task_name,priority,status,user_nameに内容が記載されていればバリデーションが通る' do
-      task = Task.new(task_name: "task", deadline: "2020-01-02", priority: "中", status: "着手中", user_name:"1")
+      task = Task.new(task_name: "task", deadline: "2020-01-02", priority: "中", status: "着手中")
       expect(task).to be_valid
     end
 end

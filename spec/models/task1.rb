@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :model do
   context 'scopeメソッドで検索をした場合' do
     before do
-      Task.create(task_name: "task", deadline: "2020-01-02", priority: "中", status: "着手中", user_name:"1")
-      Task.create(task_name: "sample", deadline: "2020-01-02", priority: "中", status: "未着手", user_name:"1")
+      Task.create(task_name: "task", deadline: "2020-01-02", priority: "中", status: "着手中")
+      Task.create(task_name: "sample", deadline: "2020-01-02", priority: "中", status: "未着手")
     end
     it "scopeメソッドでタイトル検索ができる" do
       expect(Task.get_by_task_name('task').count).to eq 1

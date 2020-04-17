@@ -2,7 +2,6 @@ class Task < ApplicationRecord
   validates :task_name,  presence: true, length: { maximum: 30 }
   validates :priority,  presence: true, length: { maximum: 10 }
   validates :status,  presence: true, length: { maximum: 10 }
-  validates :user_name,  presence: true, length: { maximum: 30 }
 
   scope :get_by_task_name, ->(task_name) {
     where("task_name like ?", "%#{task_name}%")
@@ -12,4 +11,5 @@ class Task < ApplicationRecord
   }
 
   enum priority:  [:'高', :'中', :'低']
+  belongs_to :user
 end

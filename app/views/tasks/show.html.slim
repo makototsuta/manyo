@@ -18,8 +18,8 @@ table.table.table-hover
       th= Task.human_attribute_name(:status)
       td= @task.status
     tr
-      th= Task.human_attribute_name(:user_name)
-      td= @task.user_name
+      th= '登録者'
+      td= @task.user.name
 
 = link_to '編集', edit_task_path, class: 'btn btn-primary mr-3'
 = link_to '削除', @task, method: :delete, data: { confirm: "タスク「#{@task.task_name}」を削除します。宜しいですか？"}, class: 'btn btn-danger'
