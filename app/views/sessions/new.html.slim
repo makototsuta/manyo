@@ -1,9 +1,10 @@
+h3 ログイン
 
-h3 Log in
-
-= form_with(scope: :session, url: sessions_path, local: true) do |f|
-  = f.label :email
-  = f.email_field :email
-  = f.label :password
-  = f.password_field :password
-  = f.submit "Log in"
+= form_with(scope: :session, url: login_path, local: true) do |f|
+  .form-group
+    = f.label :email, 'メールアドレス'
+    = f.text_field :email, class: 'form-control', id: 'session_email'
+  .form-group
+    = f.label :password, 'パスワード'
+    = f.password_field :password, class: 'form-control', id: 'session_password'
+  = f.submit 'ログインする', class: 'btn btn-primary'
