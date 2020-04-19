@@ -22,7 +22,7 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = current_user.tasks.find(params[:id])
+    #@task = current_user.tasks.find(params[:id])
   end
 
   def new
@@ -30,7 +30,7 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = current_user.tasks.find(params[:id])
+    #@task = current_user.tasks.find(params[:id])
   end
 
   def create
@@ -62,7 +62,11 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @task = current_user.tasks.find(params[:id])
+    begin
+      @task = current_user.tasks.find(params[:id])
+    rescue
+      redirect_to tasks_url
+    end
   end
 
 end

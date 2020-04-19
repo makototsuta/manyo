@@ -1,13 +1,9 @@
 class Admin::UsersController < ApplicationController
-  #before_action :require_admin
+  before_action :require_admin
 
   def index
-    if current_user.admin?
-      @users= User.all.includes(:tasks)
-      @users= @users.page(params[:page]).per(5)
-    else
-      redirect_to tasks_path, notice: "「あなたは管理者ではありません」"
-    end
+    @users= User.all.includes(:tasks)
+    @users= @users.page(params[:page]).per(5)
   end
 
   def show
@@ -62,7 +58,6 @@ class Admin::UsersController < ApplicationController
 
   end
 
-
   private
 
   def user_params
@@ -70,7 +65,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def require_admin
-    redirect_to root_path unless current_user.admin?
+    redirect_to root_path, notice: "「あなたは管理者ではありません」" unless current_user.admin?
   end
 
 end
