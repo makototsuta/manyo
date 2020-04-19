@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   root to: 'tasks#index'
   resources :tasks do
   end
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show, :destroy]
 
 end

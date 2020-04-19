@@ -1,9 +1,13 @@
 class Admin::UsersController < ApplicationController
-  before_action :require_admin
+  #before_action :require_admin
 
   def index
-    @users= User.all.includes(:tasks)
-    @users= @users.page(params[:page]).per(5)
+    if current_user.admin?
+      @users= User.all.includes(:tasks)
+      @users= @users.page(params[:page]).per(5)
+    else
+      redirect_to tasks_path, notice: "「あなたは管理者ではありません」"
+    end
   end
 
   def show
@@ -40,8 +44,22 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    redirect_to admin_users_url, notice:"タスク「#{@user.name}」を削除しました。"
+
+    unless @user == current_user
+      @user.destroy
+      flash[:notice] = "タスク「#{@user.name}」を削除しました。"
+      redirect_to admin_users_path
+    else
+      if User.where(admin: :true).count > 1
+        @user.destroy
+        flash[:notice] = "タスク「#{@user.name}」を削除しました。"
+        redirect_to admin_users_path
+      else
+        flash[:notice] = "管理者が最低一人必要です"
+        redirect_to admin_users_url(@user)
+      end
+    end
+
   end
 
 
