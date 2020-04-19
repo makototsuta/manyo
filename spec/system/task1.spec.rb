@@ -29,7 +29,6 @@ RSpec.describe 'タスク管理機能', type: :system do
         select '1', from: 'task_deadline_3i'
         select '高', from: '優先順位'
         select '着手中', from: 'ステータス'
-        fill_in '登録者', with: 'makoto'
 
         click_on '登録する'
         expect(page).to have_content '登録しました'

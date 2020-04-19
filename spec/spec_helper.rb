@@ -1,4 +1,5 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+require 'database_cleaner'
 require 'capybara/rspec'
 require 'supports/capybara'
 
@@ -6,6 +7,25 @@ RSpec.configure do |config|
 
   config.before(:each, type: :system) do
     driven_by :selenium_chrome_headless
+  end
+
+  config.before(:suite) do
+    # DBを綺麗にする手段を指定、トランザクションを張ってrollbackするように指定
+    DatabaseCleaner.strategy = :transaction
+    # truncate table文を実行し、レコードを消す
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  # exampleが始まるごとに実行
+  config.before(:each) do
+    # strategyがtransactionなので、トランザクションを張る
+    DatabaseCleaner.start
+  end
+
+  # exampleが終わるごとに実行
+  config.after(:each) do
+    # strategyがtransactionなので、rollbackする
+    DatabaseCleaner.clean
   end
 
   config.expect_with :rspec do |expectations|
