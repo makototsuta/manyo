@@ -4,6 +4,8 @@ class TasksController < ApplicationController
   def index
     @tasks = current_user.tasks.page(params[:page]).per(5).order(created_at: :desc)
 
+    @tasks = @tasks.joins(:labels).where(labels: { id: params[:label_id] }) if params[:label_id].present?
+
     if params[:task_name].present?
       @tasks = @tasks.get_by_task_name params[:task_name]
     end
@@ -58,7 +60,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:task_name, :deadline, :priority, :status, :user_name)
+    params.require(:task).permit(:task_name, :deadline, :priority, :status, :user_name, { label_ids: [] })
   end
 
   def set_task

@@ -32,6 +32,7 @@ table.table.table-hover
       th= Task.human_attribute_name(:deadline)
       th= Task.human_attribute_name(:priority)
       th= Task.human_attribute_name(:status)
+
     tbody
     - if @user.tasks.present?
       - @user.tasks.each do |task|

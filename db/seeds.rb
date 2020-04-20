@@ -1,8 +1,5 @@
 5.times do |n|
-  name = Faker::Games::Pokemon.name
-  email = Faker::Internet.email
+  name = Faker::Company::bs
 
-  User.create!(name: name,
-               email: email,
-               )
+  Label.create!(name: name)
 end
