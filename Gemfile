@@ -44,6 +44,6 @@ gem 'bootstrap'
 gem 'rails_12factor', group: :production
 gem 'kaminari'
 gem 'bcrypt', '3.1.11'
-gem 'rails_autolink'
 
+#gem 'rails_autolink'
 #gem 'ransack'
