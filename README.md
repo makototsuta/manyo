@@ -7,14 +7,14 @@
 |password_confirmation  string|
 
 
-| herokuデプロイの方法 |
+|   | herokuデプロイの方法 |
 ----|----
-| $ heroku login |
-| 登録したメールアドレス/パスワード入力 |
-| $ git add -A |
-| $ git commit -m "commit message" |
-| $ heroku create |
-| $ git push heroku branch名:master |
-| $ heroku run rails db:migrate |
-| $ heroku config:set USER=username |
-| $ heroku config:set PASS=password |
+| 1 | $ heroku login |
+| 2 |登録したメールアドレス/パスワード入力 |
+| 3 |$ git add -A |
+| 4 |$ git commit -m "commit message" |
+| 5 |$ heroku create |
+| 6 |$ git push heroku branch名:master |
+| 7 |$ heroku run rails db:migrate |
+| 8 |$ heroku config:set USER=username |
+| 9 |$ heroku config:set PASS=password |
