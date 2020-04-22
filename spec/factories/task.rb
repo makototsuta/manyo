@@ -7,6 +7,12 @@ FactoryBot.define do
     deadline { '2020-05-02' }
     priority { '高' }
     status { '着手中' }
+
+    trait :task_with_labels do
+      after(:build) do |task|
+        task.labels << build(:label)
+      end
+    end
   end
   # 作成するテストデータの名前を「second_task」とします
 
