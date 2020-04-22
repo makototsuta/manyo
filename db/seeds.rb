@@ -1,9 +1,3 @@
-#5.times do |n|
-#  name = Faker::Company::bs
-
-#  Label.create!(name: name)
-#end
-
 User.create!(
   name: 'test1',
   email: 'test@example.com',
@@ -34,4 +28,24 @@ User.create!(
   admin: true,
   password: 'password',
   password_confirmation: 'password'
+  )
+
+Label.create!(
+  name: 'sample',
+  )
+
+Label.create!(
+name: 'sample1',
+)
+
+Label.create!(
+name: 'sample2',
+)
+
+Label.create!(
+name: 'sample3',
+)
+
+Label.create!(
+  name: 'sample4',
   )

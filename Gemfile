@@ -45,5 +45,8 @@ gem 'rails_12factor', group: :production
 gem 'kaminari'
 gem 'bcrypt', '3.1.11'
 gem 'faker'
+gem 'seed_dump'
+
+
 #gem 'rails_autolink'
 #gem 'ransack'
