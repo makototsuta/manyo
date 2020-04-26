@@ -20,3 +20,4 @@
 | $ heroku run rails db:migrate | $ heroku run rails db:migrate |
 | $ heroku config:set USER=username | 不要 |
 | $ heroku config:set PASS=password | 不要 |
+| GitHub連携(herokuサイト→アプリ→deployタブ→deployment method:github) | 不要 |
