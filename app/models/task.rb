@@ -2,6 +2,7 @@ class Task < ApplicationRecord
   validates :task_name,  presence: true, length: { maximum: 30 }
   validates :priority,  presence: true, length: { maximum: 10 }
   validates :status,  presence: true, length: { maximum: 10 }
+  validates :deadline, presence: true
 
   scope :get_by_task_name, ->(task_name) {
     where("task_name like ?", "%#{task_name}%")

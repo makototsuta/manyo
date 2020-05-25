@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   skip_before_action :login_required
 
   def new
-    @user = User.new
+    if logged_in?
+      redirect_to root_path
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -17,7 +21,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    begin
+      @user = current_user.users.find(params[:id])
+    rescue
+      redirect_to root_path
+    end
   end
 
   private
@@ -25,5 +33,13 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation)
+  end
+
+  def set_user
+    begin
+      @task = current_user.tasks.find(params[:id])
+    rescue
+      redirect_to tasks_url
+    end
   end
 end

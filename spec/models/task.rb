@@ -2,18 +2,18 @@ require 'rails_helper'
 
 RSpec.describe 'タスク管理機能', type: :model do
     it 'task_nameが空ならバリテーションが通らない' do
-      task = Task.new(task_name: " ", deadline: "2020-01-02", priority: "中", status: "着手中")
+      task = Task.new(task_name: "", deadline: "2020-01-02", priority: "中", status: "着手中")
       expect(task).not_to be_valid
     end
 
-    it 'task_nameが30文字以上のときエラーになる' do
-      task = Task.new task_name: "#{'a'*31}"
-      task.valid?
-      expect(task.errors[:task_name]).to include('は30文字以内で入力してください')
+    it 'priorityが空ならバリデーションが通らない' do
+      task = Task.new(task_name: "task", deadline: "2020-01-02", priority: "", status: "着手中")
+      expect(task).not_to be_valid
     end
 
-    it 'task_name,priority,status,user_nameに内容が記載されていればバリデーションが通る' do
-      task = Task.new(task_name: "task", deadline: "2020-01-02", priority: "中", status: "着手中")
+    it 'task_nameとpriorityに内容が記載されていればバリデーションが通る' do
+      user = User.new(id: 1, name: "sample", email: "sample@example.com", password: "0000000", admin: false)
+      task = Task.new(task_name: "task", deadline: "2020-01-02", priority: "中", status: "着手中", user: user)
       expect(task).to be_valid
     end
 end
